@@ -205,6 +205,9 @@ body {
 		font-size: 2rem;
 		text-align: center;
 	}
+	.sticky-top {
+		overflow: hidden;
+	}
 }
 
 /* Mobile */
