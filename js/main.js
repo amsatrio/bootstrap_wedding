@@ -37,3 +37,51 @@ offcanvas.addEventListener("hidden.bs.offcanvas", function () {
 offcanvas.addEventListener("show.bs.offcanvas", function () {
     stickyTop.style.overflow = "visible";
 });
+
+// HERO DISABLE SCROLL
+function heroDisableScroll() {
+    let isOpened = localStorage.getItem("opened");
+    if (isOpened === "1") {
+        return;
+    }
+
+    scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+
+    window.onscroll = function () {
+        window.scrollTo(scrollTop, scrollLeft);
+    }
+
+    const rootElement = document.querySelector(":root");
+    rootElement.style.scrollBehavior = "auto";
+}
+function heroEnableScroll() {
+    window.onscroll = function () { }
+
+    const rootElement = document.querySelector(":root");
+    rootElement.style.scrollBehavior = "smooth";
+
+    localStorage.setItem("opened", "1");
+}
+
+heroDisableScroll();
+
+
+// SUBMIT GUEST
+function submitGuest() {
+    const form = document.getElementById("rsvp-confirm-guest-form");
+    form.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const data = new FormData(form);
+        const action = e.target.action;
+
+        console.log(data);
+        console.log(action);
+
+        // it should send to backend
+
+        alert("success");
+    });
+}
+submitGuest();
